@@ -64,9 +64,9 @@ if [[ "${ARM}" != yes ]]; then
         SSHPASS=alpine
     fi
 fi
-rm -rf LiRa-tmp
-mkdir LiRa-tmp
-cd LiRa-tmp
+rm -rf LiRa1n-tmp
+mkdir LiRa1n-tmp
+cd LiRa1n-tmp
 
 cat > lira1n.sh <<EOT
 #!/bin/bash
@@ -181,7 +181,7 @@ if [[ ! "${ARM}" = yes ]]; then
             root@127.0.0.1:/var/root/
     fi
 fi
-echo "Installingbootstrap"
+echo "Installing bootstrap"
 if [[ "${ARM}" = yes ]]; then
     bash ./lira1n.sh
 else
