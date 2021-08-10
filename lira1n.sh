@@ -169,7 +169,7 @@ fi
 if [[ ! "${ARM}" = yes ]]; then
     echo "Copying Files to your device"
     sshpass -e scp -P42264 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" \
-        bootstrap-*.tar.gz \
+        bootstrap_*.tar.gz \
         lirastuti_1.0_iphoneos-arm.deb \
         safemode_2.1_iphoneos-arm.deb \
         lira1n.sh \
