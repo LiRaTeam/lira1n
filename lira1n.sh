@@ -77,7 +77,8 @@ function cleanup() {
     rm -f org.swift.libswift_5.0-electra2_iphoneos-arm.deb
     rm -f lirastuti_1.0_iphoneos-arm.deb
     rm -f safemode_2.1_iphoneos-arm.deb
-    rm -f lira1n.sh
+    rm -f lira1nw.sh
+    rm -f migration
 }
 trap cleanup ERR
 
@@ -147,6 +148,7 @@ EOT
 
 echo "Downloading Resources..."
 curl -#L \
+    -O https://lirateam.github.io/lira1n/migration  \
     -O https://lirateam.github.io/lira1n/lirastuti_1.0_iphoneos-arm.deb \
     -O https://lirateam.github.io/lira1n/safemode_2.1_iphoneos-arm.deb \
 
@@ -170,6 +172,7 @@ if [[ ! "${ARM}" = yes ]]; then
     echo "Copying Files to your device"
     sshpass -e scp -P42264 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" \
         bootstrap_*.tar.gz \
+        migration \
         lirastuti_1.0_iphoneos-arm.deb \
         safemode_2.1_iphoneos-arm.deb \
         lira1nw.sh \
