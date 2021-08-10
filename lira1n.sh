@@ -64,11 +64,11 @@ if [[ "${ARM}" != yes ]]; then
         SSHPASS=alpine
     fi
 fi
-rm -rf LiRa1n-tmp
-mkdir LiRa1n-tmp
-cd LiRa1n-tmp
+rm -rf LiRan-tmp
+mkdir LiRan-tmp
+cd LiRan-tmp
 
-cat > lira1n.sh <<EOT
+cat > lira1nw.sh <<EOT
 #!/bin/bash
 set -e
 
@@ -89,7 +89,7 @@ if [[ ! "\${ARM}" = yes ]]; then
 fi
 if [[ -f "/.bootstrapped" ]]; then
     mkdir -p /LiRa && mv migration /LiRa
-    chmod 0755 /LiRay/migration
+    chmod 0755 /LiRa/migration
     /LiRa/migration
     rm -rf /LiRa
 else
@@ -172,7 +172,7 @@ if [[ ! "${ARM}" = yes ]]; then
         bootstrap_*.tar.gz \
         lirastuti_1.0_iphoneos-arm.deb \
         safemode_2.1_iphoneos-arm.deb \
-        lira1n.sh \
+        lira1nw.sh \
         root@127.0.0.1:/var/root/
 
     if [[ -f org.swift.libswift_5.0-electra2_iphoneos-arm.deb ]]; then
@@ -183,9 +183,9 @@ if [[ ! "${ARM}" = yes ]]; then
 fi
 echo "Installing bootstrap"
 if [[ "${ARM}" = yes ]]; then
-    bash ./lira1n.sh
+    bash ./lira1nw.sh
 else
-    sshpass -e ssh -p42264 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "bash /var/root/lira1n.sh"
+    sshpass -e ssh -p42264 -o "StrictHostKeyChecking no" -o "UserKnownHostsFile=/dev/null" root@127.0.0.1 "bash /var/root/lira1nw.sh"
     echo "All Done!"
     killall iproxy
 fi
