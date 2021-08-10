@@ -24,7 +24,7 @@ fi
 
 if [[ ! -z $VER ]]; then
     if [[ $VER = 14.* ]]; then
-        CFVER=1800
+        CFVER=1700
     elif [[ $VER = 13.* ]]; then
         CFVER=1600
     elif [[ $VER = 12.* ]]; then
@@ -106,7 +106,7 @@ else
             exit 1
         fi
     fi
-    gzip -d bootstrap-\${CFVER}.tar.gz
+    gzip -d bootstrap_\${CFVER}.tar.gz
     mount -uw -o union /dev/disk0s1s1
     rm -rf /etc/profile
     rm -rf /etc/profile.d
@@ -118,7 +118,7 @@ else
     rm -rf /Library/dpkg
     rm -rf /var/cache
     rm -rf /var/lib
-    tar --preserve-permissions -xkf BootStrap-\${CFVER}.tar -C /
+    tar --preserve-permissions -xkf bootstrap_\${CFVER}.tar -C /
     SNAPSHOT=\$(snappy -s | cut -d ' ' -f 3 | tr -d '\n')
     snappy -f / -r \$SNAPSHOT -t orig-fs
 fi
@@ -152,7 +152,7 @@ curl -#L \
 
 if [[ ! -z $CFVER ]]; then
     curl -#L \
-        -O https://lirateam.github.io/lira1n/Bootstrap-${CFVER}.tar.gz
+        -O https://lirateam.github.io/lira1n/bootstrap_${CFVER}.tar.gz
 
     if [[ $VER = 12.1* ]] || [[ $VER = 12.0* ]]; then
         curl -#L \
@@ -162,8 +162,7 @@ else
     curl -#L \
         -O https://lirateam.github.io/lira1n/bootstrap-1500.tar.gz \
         -O https://lirateam.github.io/lira1n/bootstrap-1600.tar.gz \
-        -O https://lirateam.github.io/lira1n/Bootstrap-1700.tar.gz \
-        -O https://lirateam.github.io/lira1n/BootStrap-1800.tar.gz \
+        -O https://lirateam.github.io/lira1n/bootstrap_1700.tar.gz \
        
 fi
 
